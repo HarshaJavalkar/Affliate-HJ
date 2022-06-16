@@ -1,0 +1,8 @@
+const mongoose = require("mongoose");
+const AdminCreateSchema = new mongoose.Schema({
+  username: String,
+  creation_id: Number,
+});
+const AdminCreationObj = mongoose.model("Adminslist", AdminCreateSchema);
+
+module.exports = AdminCreationObj;

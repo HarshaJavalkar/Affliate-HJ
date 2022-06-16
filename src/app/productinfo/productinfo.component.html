@@ -1,0 +1,49 @@
+<div class="container" style="border: none">
+
+  <i routerLink="/store/{{clickedCard}}" class="fas h1 fa-chevron-circle-left" style="cursor: pointer;"></i>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="thumbnail" style="padding: 30px; border: none">
+        <img src="{{ product?.photo }}" class="responsive" width="100%" alt="" />
+
+      </div>
+    </div>
+
+    <div class="col-sm-9 desc mt-5">
+      <h4>
+        <b>{{ product?.prod_name }}</b>
+      </h4>
+      <h6>Author: {{ product?.author}}</h6>
+      <small>Category: {{ product?.type }}</small>
+
+      <div>
+        <h3><i class="fa fa-rupee-sign"></i> {{ product?.prod_price }}</h3>
+      </div>
+      <br />
+
+      <div class="row">
+        <div class="col-sm">
+          <h4>About Book</h4>
+          <h6> {{ product?.prod_desc }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5 me-5">
+      <!-- <button class="btn1 col-sm-4 " 
+            (click)="clickedCart(product)">
+          <i class="fas fa-shopping-cart"></i>&nbsp;Add to Cart
+        </button> -->
+
+      <button class="btn1  float-end" (click)="buyNow(product)">
+        <i class="fas fa-shopping-cart"></i>&nbsp;Buy now
+      </button>
+
+      <button class="btn1  float-end" (click)="clickedWishlist(product)">
+        <i class=" text-danger  fa fa-heart"></i>&nbsp; Wishlist
+      </button>
+
+    </div>
+
+  </div>
+</div>

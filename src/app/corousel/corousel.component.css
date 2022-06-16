@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+.corosalTitleHead,.card-text{
+
+
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+
+
+img{
+    height: 600px;
+}
+
+
+
+
+
+@media only screen  and (min-width:1201px){
+
+
+    img{
+        height: 600px;
+
+
+    }
+
+
+
+
+}
+
+
+
+@media only screen  and (max-width:1200px){
+
+
+    img{
+        height: 500px;
+
+
+    }
+
+
+
+
+}
+
+
+
+
+@media only screen  and (max-width:600px){
+
+
+    img{
+        height: 400px;
+
+
+    }
+
+
+
+
+}
+
+
+
+
+@media only screen  and (max-width:350px){
+
+
+    img{
+        height: 400px;
+
+
+    }
+
+
+
+
+}
