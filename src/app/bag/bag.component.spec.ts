@@ -14,8 +14,8 @@ describe('BagComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ BagComponent ],
-      providers:[DataService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule, ToastrModule.forRoot()]
+      providers: [DataService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule, ToastrModule.forRoot()]
     })
     .compileComponents();
   });

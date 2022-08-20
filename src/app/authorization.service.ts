@@ -17,13 +17,13 @@ export class AuthorizationService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // 1 read token
 
-    let token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
 
     // if token is found
 
     if (token) {
       //  if token found add it to header of req obj since obj is immutable so we need to trans form first
-      let transformedReq = req.clone({
+      const transformedReq = req.clone({
         headers: req.headers.set('Authorization', `Bearer ${token}`),
       });
       return next.handle(transformedReq);

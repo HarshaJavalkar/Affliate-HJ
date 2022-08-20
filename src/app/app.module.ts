@@ -110,7 +110,7 @@ import { VerifyGuardService } from './verify-guard.service';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationService,
       multi: true,
-  
+
     },
     PersistenceService,
     VerifyGuardService

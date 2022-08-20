@@ -13,8 +13,8 @@ describe('PagenotfoundComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ PagenotfoundComponent ],
-      providers:[PersistenceService, DataService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [PersistenceService, DataService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

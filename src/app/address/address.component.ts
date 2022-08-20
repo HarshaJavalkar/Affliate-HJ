@@ -14,15 +14,15 @@ export class AddressComponent implements OnInit {
   sum = 0;
   deliveryCharge = 50;
   total = 0;
-  bool: boolean = false;
+  bool = false;
   addressList: any;
-  addressLimit: boolean = true;
+  addressLimit = true;
   updatedAddressList: any;
-  ordersBetweenPayAddr: string = '';
+  ordersBetweenPayAddr = '';
 
-  selectedAddressFromList: number = -1;
+  selectedAddressFromList = -1;
   orders = [{ selectedAddress: '', orderBy: '' }];
-  validity: boolean = false;
+  validity = false;
 
   user = { username: '', id: 0 };
 
@@ -35,19 +35,19 @@ export class AddressComponent implements OnInit {
   addAddress(ref) {
     if (ref.status == 'VALID') {
       this.validity = true;
-      let addObj = ref.value;
+      const addObj = ref.value;
 
       addObj.username = sessionStorage.getItem('username');
 
       if (this.addressList.length >= 5) {
         this.addressLimit = false;
-      } 
+      }
       else {
         this.addressLimit = true;
       }
 
       this.ds.addAddress(addObj).subscribe((res) => {
-        if (res['message'] == 'Address limit reached Maximum') {
+        if (res.message == 'Address limit reached Maximum') {
           this.toastr.warning(' address limit reached max');
         } else {
           this.toastr.success('Address added  ');
@@ -79,7 +79,7 @@ export class AddressComponent implements OnInit {
 
       this.ds.deleteAddress(this.updatedAddressList).subscribe(
         (res) => {
-          this.toastr.success(res['message']);
+          this.toastr.success(res.message);
         },
         (err) => {}
       );
@@ -114,7 +114,7 @@ export class AddressComponent implements OnInit {
 
     this.ds.getAddress(this.user).subscribe(
       (res) => {
-        this.addressList = res['message'];
+        this.addressList = res.message;
 
         if (this.addressList.length >= 5) {
           this.addressLimit = false;
@@ -127,10 +127,11 @@ export class AddressComponent implements OnInit {
 
     this.ds.getCart(this.user).subscribe(
       (res) => {
-        this.cart = res['message'];
+        this.cart = res.message;
 
-        for (let i = 0; i < this.cart.length; i++)
+        for (let i = 0; i < this.cart.length; i++) {
           this.sum = Math.round(this.sum + this.cart[i].prod_price);
+        }
 
         if (this.sum > 1000) {
           this.bool = true;

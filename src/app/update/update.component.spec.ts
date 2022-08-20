@@ -16,8 +16,8 @@ describe('UpdateComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ UpdateComponent ],
-      providers:[DataService, SpinnerService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule,ReactiveFormsModule,FormsModule ,ToastrModule.forRoot()]
+      providers: [DataService, SpinnerService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule, ReactiveFormsModule, FormsModule , ToastrModule.forRoot()]
     })
     .compileComponents();
   });

@@ -16,7 +16,7 @@ export class AdventureComponent implements OnInit {
   ngOnInit(): void {
     this.ds.getAllaffliateProductstoUsers().subscribe(
       (res) => {
-        this.booksAvailable = res['message'];
+        this.booksAvailable = res.message;
 
         this.adventureBooks = this.booksAvailable.filter((book) => {
           book.type == 'Adventure';

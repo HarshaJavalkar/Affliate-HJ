@@ -11,8 +11,8 @@ import { DataService } from '../data.service';
 export class UpdateComponent implements OnInit {
   dataFromServer = [];
 
-  public inputName: string = '';
-  save: boolean = false;
+  public inputName = '';
+  save = false;
   editIcon: boolean = !this.save;
   sum: number;
 
@@ -20,13 +20,13 @@ export class UpdateComponent implements OnInit {
   localUser = { username: '' };
   delUser = { prodIdDel: '' };
 
-  constructor(private ds: DataService, private router: Router,private toastr: ToastrService) {
+  constructor(private ds: DataService, private router: Router, private toastr: ToastrService) {
     this.localUser.username = sessionStorage.getItem('username');
     //  console.log("bloody",this.localUser)
 
     this.ds.getProducts(this.localUser).subscribe(
       (res) => {
-        this.dataFromServer = res['message'];
+        this.dataFromServer = res.message;
       },
       (err) => {
         console.log(err);
@@ -41,14 +41,14 @@ export class UpdateComponent implements OnInit {
   }
 
   deleteProduct(index) {
-    console.log(index);  
+    console.log(index);
 
-    this.delUser.prodIdDel = index
+    this.delUser.prodIdDel = index;
     this.ds.deleteAdminProducts(this.delUser).subscribe(
       (res) => {
-        console.log(res['message']);
+        console.log(res.message);
 
-      
+
       },
       (err) => {
         console.log('error at delete ', err);
@@ -59,14 +59,14 @@ export class UpdateComponent implements OnInit {
   saveData(data) {
     // document.querySelectorAll(".name")[index].innerHTML=document.querySelectorAll('.ch_name')[index].value
 
-    let adminReqData = data.value;
+    const adminReqData = data.value;
     adminReqData.prod_id = this.dataFromServer[this.indexClicked].prod_id;
     console.log(adminReqData);
     this.ds.updateAdminProducts(adminReqData).subscribe(
       (res) => {
-      this.toastr.success( res['message']);
+      this.toastr.success( res.message);
 
-            
+
       },
       (err) => {}
     );

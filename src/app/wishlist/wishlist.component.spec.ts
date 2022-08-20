@@ -13,8 +13,8 @@ describe('WishlistComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ WishlistComponent ],
-      providers:[DataService],
-      imports:[RouterTestingModule, HttpClientModule, ToastrModule.forRoot() ]
+      providers: [DataService],
+      imports: [RouterTestingModule, HttpClientModule, ToastrModule.forRoot() ]
     })
     .compileComponents();
   });

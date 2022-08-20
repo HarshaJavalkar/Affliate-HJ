@@ -15,10 +15,8 @@ var nodemailer = require("nodemailer");
 adminApiObj.post(
   "/createadmin",
   errorHandler(async (req, res) => {
-    console.log("adminApi is Working ");
     let adminObj = req.body;
     let admin = await Admin.findOne({ email: adminObj.email });
-    console.log(admin);
     if (admin == null) {
       let hashedPassword = await bcryptjs.hash(req.body.password, 7);
       let random = Math.floor(100000 + Math.random() * 900000);
@@ -30,8 +28,7 @@ adminApiObj.post(
         regcode: random,
         verified: false,
       });
-      console.log("H");
-      console.log("H+ " + newAdminObj);
+ 
       //save
       await newAdminObj.save();
       //  console.log(user)

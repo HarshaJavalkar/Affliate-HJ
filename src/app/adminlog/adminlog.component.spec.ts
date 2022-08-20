@@ -13,8 +13,8 @@ describe('AdminlogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AdminlogComponent ],
-      providers:[DataService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [DataService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

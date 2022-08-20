@@ -10,7 +10,7 @@ import { DataService } from '../data.service';
 export class CartComponent implements OnInit {
   user = { username: '' };
   cart: any;
-  sum: number = 0;
+  sum = 0;
   totalPrice: number;
 
   deliveryCharge: number;
@@ -21,10 +21,11 @@ export class CartComponent implements OnInit {
 
     this.ds.getCart(this.user).subscribe(
       (res) => {
-        this.cart = res['message'];
+        this.cart = res.message;
 
-        for (let i = 0; i < this.cart.length; i++)
+        for (let i = 0; i < this.cart.length; i++) {
           this.sum = this.sum + this.cart[i].prod_price;
+        }
 
         this.deliveryCharge = this.cart.length < 10 ? 50 : 100;
 

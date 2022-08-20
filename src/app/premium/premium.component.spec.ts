@@ -12,8 +12,8 @@ describe('PremiumComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ PremiumComponent ],
-      providers:[DataService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [DataService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

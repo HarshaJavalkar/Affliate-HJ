@@ -18,14 +18,14 @@ export class WishlistComponent implements OnInit {
   wishlist: any;
   wishlistIsEmpty: boolean;
   userObj = { username: '' };
-  indexDeleted
+  indexDeleted;
   ngOnInit(): void {
     this.userObj.username = sessionStorage.getItem('username');
 
     this.ds.getproductsFromWishlist(this.userObj).subscribe(
       (res) => {
         if (
-          res['message'] == 'Session is Expired.. Please relogin to continue'
+          res.message == 'Session is Expired.. Please relogin to continue'
         ) {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -33,10 +33,10 @@ export class WishlistComponent implements OnInit {
           this.router.navigateByUrl('/login');
           this.toastr.warning('Session Expired Please relogin');
         }
-        if (res['message'] == 'Unauthorized access') {
-          this.toastr.warning(res['message']);
+        if (res.message == 'Unauthorized access') {
+          this.toastr.warning(res.message);
         } else {
-          this.wishlist = res['message'];
+          this.wishlist = res.message;
 
           if (this.wishlist.length == 0) {
             this.wishlistIsEmpty = false;
@@ -53,28 +53,30 @@ export class WishlistComponent implements OnInit {
   deleteFromWishlist(wish) {
 
 
-    console.log(this.wishlist)
-    if(this.wishlist.length==0)
-    this.wishlistIsEmpty=true
-    else
-    this.wishlistIsEmpty=false
-    
-     for(let i=0 ;i<this.wishlist.length;i++){
-       if(wish.prod_id==this.wishlist[i].prod_id){
+    console.log(this.wishlist);
+    if (this.wishlist.length == 0) {
+    this.wishlistIsEmpty = true;
+    }
+    else {
+    this.wishlistIsEmpty = false;
+    }
 
-        this.indexDeleted=i
+    for (let i = 0 ; i < this.wishlist.length; i++){
+       if (wish.prod_id == this.wishlist[i].prod_id){
+
+        this.indexDeleted = i;
         break;
        }
 
-       
+
      }
 
- this.wishlist.splice(this.indexDeleted,1)
+    this.wishlist.splice(this.indexDeleted, 1);
 
     this.ds.deleteProductFromWishlist(wish).subscribe(
       (res) => {
         if (
-          res['message'] == 'Session is Expired.. Please relogin to continue'
+          res.message == 'Session is Expired.. Please relogin to continue'
         ) {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -82,16 +84,16 @@ export class WishlistComponent implements OnInit {
           this.router.navigateByUrl('/login');
           this.toastr.warning('Session Expired Please relogin');
         }
-        if (res['message'] == 'Unauthorized access') {
-          this.toastr.warning(res['message']);
+        if (res.message == 'Unauthorized access') {
+          this.toastr.warning(res.message);
         } else {
-          this.toastr.success(res['message']);
+          this.toastr.success(res.message);
         }
       },
       (err) => {}
     );
 
-    
+
     // this.wishlist.splice()
   }
 
@@ -99,7 +101,7 @@ export class WishlistComponent implements OnInit {
     this.ds.moveToCartFromWishlist(book).subscribe(
       (res) => {
         if (
-          res['message'] == 'Session is Expired.. Please relogin to continue'
+          res.message == 'Session is Expired.. Please relogin to continue'
         ) {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -107,10 +109,10 @@ export class WishlistComponent implements OnInit {
           this.router.navigateByUrl('/login');
           this.toastr.warning('Session Expired Please relogin');
         }
-        if (res['message'] == 'Unauthorized access') {
-          this.toastr.warning(res['message']);
+        if (res.message == 'Unauthorized access') {
+          this.toastr.warning(res.message);
         } else {
-          this.toastr.success(res['message']);
+          this.toastr.success(res.message);
         }
       },
       (err) => {}

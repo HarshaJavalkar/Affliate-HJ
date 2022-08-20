@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logStatus: boolean;
   $subs: Subscription;
 
-  status: boolean = false;
+  status = false;
   adminName: string;
 
   constructor(
@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   login(){
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
   loginType() {
     if (sessionStorage.getItem('Usertype') == 'User') {
@@ -58,7 +58,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   usertype() {
-    let type = sessionStorage.getItem('Usertype');
+    const type = sessionStorage.getItem('Usertype');
     if (type == 'Admin') {
       return 0;
     }

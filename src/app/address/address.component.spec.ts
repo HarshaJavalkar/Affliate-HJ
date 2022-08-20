@@ -15,8 +15,8 @@ describe('AddressComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AddressComponent ],
-      providers:[DataService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule, ReactiveFormsModule, FormsModule, ToastrModule.forRoot()]
+      providers: [DataService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule, ReactiveFormsModule, FormsModule, ToastrModule.forRoot()]
     })
     .compileComponents();
   });

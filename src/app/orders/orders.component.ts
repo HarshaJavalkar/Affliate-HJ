@@ -11,11 +11,11 @@ export class OrdersComponent implements OnInit {
   username = { username: '' };
   myOrders: any;
   productsReceived;
-  arr: any
+  arr: any;
   productsList = [];
-  sum: number = 0;
-  pre: boolean =false
-  nex: boolean = true 
+  sum = 0;
+  pre = false;
+  nex = true;
   status: string;
 
 // start = 0
@@ -24,17 +24,17 @@ export class OrdersComponent implements OnInit {
 
 
 //     if(!(this.end>this.productsList.length-1)){
-    
+
 //     this.start =this.start+10
 //     this.end=this.end+10
-    
+
 //     this.nex=true
-    
+
 //     this.arr=this.productsList.slice(this.start,this.end)
 //     console.log(this.arr)
 //   }
 //   else{
- 
+
 //     this.nex=true
 
 
@@ -48,7 +48,7 @@ export class OrdersComponent implements OnInit {
 
 
 //   prev(){
- 
+
 
 
 //     if((this.start<10)){
@@ -76,7 +76,7 @@ export class OrdersComponent implements OnInit {
 
     this.ds.getOrders(this.username).subscribe(
       (res) => {
-        this.myOrders = res['message'];
+        this.myOrders = res.message;
 
         // // console.log(this.myOrders[0].products)
 
@@ -87,16 +87,16 @@ export class OrdersComponent implements OnInit {
           for (let j = 0; j < this.myOrders[i].products.length; j++) {
             this.productsList.push(this.myOrders[i].products[j]);
           }
-       
-       
-       
-       
+
+
+
+
        }
 
 
-       for(let i=0;i<this.productsList.length;i++ ){
+        for (let i = 0; i < this.productsList.length; i++ ){
 
-        this.sum=Math.round(this.sum+this.productsList[i].prod_price)
+        this.sum = Math.round(this.sum + this.productsList[i].prod_price);
        }
 
 

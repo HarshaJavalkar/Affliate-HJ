@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./useraccount.component.css'],
 })
 export class UseraccountComponent implements OnInit {
-  status: boolean = false;
+  status = false;
   adminName: string;
 
   constructor(private ar: ActivatedRoute, private router: Router) {}

@@ -12,8 +12,8 @@ describe('PopularComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ PopularComponent ],
-      providers:[DataService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [DataService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

@@ -11,12 +11,12 @@ import { ViewChild } from '@angular/core';
   styleUrls: ['./payment.component.css'],
 })
 export class PaymentComponent implements OnInit {
-  @ViewChild('closebutton') closebutton;
   constructor(
     private ds: DataService,
     private router: Router,
     private toastr: ToastrService
   ) {}
+  @ViewChild('closebutton') closebutton;
 
   total;
   x;
@@ -25,19 +25,21 @@ export class PaymentComponent implements OnInit {
   sum;
   bool;
   otp: number;
-  incorrectOtp: boolean = false;
-  validity: boolean = false;
+  incorrectOtp = false;
+  validity = false;
   savedCards: any;
-  displayAddCard: boolean = true;
-  cardLimitReached: boolean = false;
+  displayAddCard = true;
+  cardLimitReached = false;
   cardDetails = [{ username: '', card: '', displayName: '' }];
-  otpReceived: boolean = false;
+  otpReceived = false;
   orders = [{ selectedAddress: '', orderBy: '', status: '' }];
 
   cardIndex = { index: '', username: '', cardObj: [] };
 
-  cardSelected: boolean = false;
+  cardSelected = false;
   selectedCardFromRadio: any;
+
+  confirmed = true;
   // addAddress(ref) {
   //   console.log(ref.status);
   //   if (ref.status == 'VALID') {
@@ -64,12 +66,12 @@ export class PaymentComponent implements OnInit {
 
     this.cardIndex.cardObj = this.savedCards;
 
-    if (this.savedCards.length < 3) this.displayAddCard = true;
+    if (this.savedCards.length < 3) { this.displayAddCard = true; }
 
     this.ds.deleteCard(this.cardIndex).subscribe(
       (res) => {
         if (
-          res['message'] == 'Session is Expired.. Please relogin to continue'
+          res.message == 'Session is Expired.. Please relogin to continue'
         ) {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -77,11 +79,12 @@ export class PaymentComponent implements OnInit {
           this.router.navigateByUrl('/login');
           alert('Session Expired Please relogin');
         }
-        if (res['message'] == 'Unauthorized access') {
-          alert(res['message']);
+        if (res.message == 'Unauthorized access') {
+          alert(res.message);
         } else {
-          if (res['message'] == 'Card deleted')
-            this.toastr.success(res['message']);
+          if (res.message == 'Card deleted') {
+            this.toastr.success(res.message);
+          }
         }
       },
       (err) => {}
@@ -89,14 +92,14 @@ export class PaymentComponent implements OnInit {
   }
 
   makePayment() {
-    let user = { username: sessionStorage.getItem('username') };
+    const user = { username: sessionStorage.getItem('username') };
 
     // console.log(user)
 
     this.ds.makePaymentFinal(user).subscribe(
       (res) => {
         if (
-          res['message'] == 'Session is Expired.. Please relogin to continue'
+          res.message == 'Session is Expired.. Please relogin to continue'
         ) {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -104,11 +107,11 @@ export class PaymentComponent implements OnInit {
           this.router.navigateByUrl('/login');
           alert('Session Expired Please relogin');
         }
-        if (res['message'] == 'Unauthorized access') {
-          alert(res['message']);
+        if (res.message == 'Unauthorized access') {
+          alert(res.message);
         } else {
           if (
-            res['message'] == 'Session is Expired.. Please relogin to continue'
+            res.message == 'Session is Expired.. Please relogin to continue'
           ) {
             sessionStorage.removeItem('token');
             sessionStorage.removeItem('username');
@@ -116,10 +119,10 @@ export class PaymentComponent implements OnInit {
             this.router.navigateByUrl('/login');
             alert('Session Expired Please relogin');
           }
-          if (res['message'] == 'Unauthorized access') {
-            alert(res['message']);
+          if (res.message == 'Unauthorized access') {
+            alert(res.message);
           } else {
-            this.otp = res['message'];
+            this.otp = res.message;
 
             this.otpReceived = true;
             alert(this.otp);
@@ -129,24 +132,22 @@ export class PaymentComponent implements OnInit {
       (err) => {}
     );
   }
-
-  confirmed: boolean = true;
   confirmOtp(formOtp) {
-    let user = { username: sessionStorage.getItem('username') };
+    const user = { username: sessionStorage.getItem('username') };
 
-    let confirmOtps = formOtp.value.otp;
+    const confirmOtps = formOtp.value.otp;
 
     if (this.otp == confirmOtps) {
       this.orders[0].status = 'success';
       this.orders[0].orderBy = sessionStorage.getItem('username');
 
-      let receivedAddress = this.ds.receiveFinalAddress();
+      const receivedAddress = this.ds.receiveFinalAddress();
       this.orders[0].selectedAddress = receivedAddress;
 
       this.ds.makePaymentFinalStep(this.orders).subscribe(
         (res) => {
           if (
-            res['message'] == 'Session is Expired.. Please relogin to continue'
+            res.message == 'Session is Expired.. Please relogin to continue'
           ) {
             sessionStorage.removeItem('token');
             sessionStorage.removeItem('username');
@@ -154,8 +155,8 @@ export class PaymentComponent implements OnInit {
             this.router.navigateByUrl('/login');
             alert('Session Expired Please relogin');
           }
-          if (res['message'] == 'Unauthorized access') {
-            alert(res['message']);
+          if (res.message == 'Unauthorized access') {
+            alert(res.message);
           }
 
           // orders list  of user
@@ -173,22 +174,22 @@ export class PaymentComponent implements OnInit {
     }
   }
   cardSave(ref) {
-    let cardObj = ref.value;
+    const cardObj = ref.value;
     // console.log(cardObj)
     this.closebutton.nativeElement.click();
-    let user = sessionStorage.getItem('username');
+    const user = sessionStorage.getItem('username');
 
     this.cardDetails[0].username = user;
     this.cardDetails[0].card = cardObj;
 
-    let str = cardObj.cHname + '-' + (parseInt(cardObj.cNumber) % 10000);
+    const str = cardObj.cHname + '-' + (parseInt(cardObj.cNumber) % 10000);
 
     this.cardDetails[0].displayName = str;
 
     this.ds.cardSave(this.cardDetails).subscribe(
       (res) => {
         if (
-          res['message'] == 'Session is Expired.. Please relogin to continue'
+          res.message == 'Session is Expired.. Please relogin to continue'
         ) {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -196,10 +197,10 @@ export class PaymentComponent implements OnInit {
           this.router.navigateByUrl('/login');
           alert('Session Expired Please relogin');
         }
-        if (res['message'] == 'Unauthorized access') {
-          alert(res['message']);
+        if (res.message == 'Unauthorized access') {
+          alert(res.message);
         } else {
-          if (res['message'] == 'Card Added') {
+          if (res.message == 'Card Added') {
             this.cardLimitReached = false;
             this.x = 'modal';
 
@@ -207,7 +208,7 @@ export class PaymentComponent implements OnInit {
             this.savedCards.push(this.cardDetails[0]);
             //  console.log( this.savedCards.length)
 
-            if (this.savedCards.length >= 3) this.displayAddCard = false;
+            if (this.savedCards.length >= 3) { this.displayAddCard = false; }
           } else {
             this.cardLimitReached = true;
           }
@@ -218,14 +219,14 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let user = sessionStorage.getItem('username');
+    const user = sessionStorage.getItem('username');
 
     this.cardDetails[0].username = user;
 
     this.ds.getCards(this.cardDetails).subscribe(
       (res) => {
         if (
-          res['message'] == 'Session is Expired.. Please relogin to continue'
+          res.message == 'Session is Expired.. Please relogin to continue'
         ) {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -233,10 +234,10 @@ export class PaymentComponent implements OnInit {
           this.router.navigateByUrl('/login');
           alert('Session Expired Please relogin');
         }
-        if (res['message'] == 'Unauthorized access') {
-          alert(res['message']);
+        if (res.message == 'Unauthorized access') {
+          alert(res.message);
         } else {
-          this.savedCards = res['message'];
+          this.savedCards = res.message;
 
           if (this.savedCards.length <= 2) {
             this.displayAddCard = true;

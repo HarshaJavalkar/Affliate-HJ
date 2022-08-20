@@ -14,8 +14,8 @@ describe('UserprofileComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ UserprofileComponent ],
-      providers:[DataService, SpinnerService],
-      imports:[RouterTestingModule, HttpClientModule, ReactiveFormsModule, FormsModule]
+      providers: [DataService, SpinnerService],
+      imports: [RouterTestingModule, HttpClientModule, ReactiveFormsModule, FormsModule]
     })
     .compileComponents();
   });

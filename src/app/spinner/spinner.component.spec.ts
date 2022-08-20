@@ -11,8 +11,8 @@ describe('SpinnerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SpinnerComponent ],
-      providers:[SpinnerService],
-      imports:[HttpClientModule]
+      providers: [SpinnerService],
+      imports: [HttpClientModule]
     })
     .compileComponents();
   });

@@ -15,8 +15,8 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      providers:[DataService, SpinnerService, {provide:ToastrService, useClass:ToastrService }],
-      imports:[RouterTestingModule, HttpClientModule, BrowserDynamicTestingModule, ToastrModule.forRoot()]
+      providers: [DataService, SpinnerService, {provide: ToastrService, useClass: ToastrService }],
+      imports: [RouterTestingModule, HttpClientModule, BrowserDynamicTestingModule, ToastrModule.forRoot()]
     })
     .compileComponents();
   });

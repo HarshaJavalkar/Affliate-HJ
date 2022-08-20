@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     //   apiVersion:2,
     //   apiVersionMinor:0 ,
     //   allowedPaymentMethods:[
-        
+
     //     {
     //       type:'CARD',
     //       parameters: {
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
     //   ],
     //   merchantInfo:{
     //     merchantId:'176',
-    //     merchantName:'Demo only' 
+    //     merchantName:'Demo only'
     //   },
     //   transactionInfo:{
     //     totalPriceStatus:'FINAL',
@@ -80,13 +80,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = sessionStorage.getItem('username');
-    
+
     // this.spinner.displayLoad(true);
     this.ds.getAllaffliateProductstoUsers().subscribe(
       (res) => {
         // this.spinner.displayLoad(false);
         if (
-          res['message'] == 'Session is Expired.. Please relogin to continue'
+          res.message == 'Session is Expired.. Please relogin to continue'
         ) {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -94,19 +94,20 @@ export class HomeComponent implements OnInit {
           this.router.navigateByUrl('/login');
           alert('Session Expired Please relogin');
         }
-        if (res['message'] == 'Unauthorized access') {
-          alert(res['message']);
+        if (res.message == 'Unauthorized access') {
+          alert(res.message);
         } else {
-          this.booksAvailable = res['message'];
+          this.booksAvailable = res.message;
           for (let i = 0; i < this.booksAvailable.length; i++) {
-            if (this.booksAvailable[i].active)
+            if (this.booksAvailable[i].active) {
               this.booksUpdatedList.push(this.booksAvailable[i]);
+            }
           }
         }
       },
       (err) => {
-        
-        this.persistenceService.set('ERRORS',errorHandler(err));
+
+        this.persistenceService.set('ERRORS', errorHandler(err));
         // this.spinner.displayLoad(false);
         // this.router.navigateByUrl(`error`);
       }

@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   myForm: FormGroup;
   lists = ['User', 'Admin'];
   products = [''];
-  validity: boolean = false;
+  validity = false;
   constructor(
     private us: DataService,
     private router: Router,
@@ -30,12 +30,12 @@ export class RegisterComponent implements OnInit {
   clickedSubmit(formRef) {
     if (formRef.status) {
       this.validity = true;
-      let dataFromForm = formRef.value;
+      const dataFromForm = formRef.value;
       if (dataFromForm.radioType == 'userChecked') {
         this.us.createUser(dataFromForm).subscribe(
           (res) => {
-            if (res['message'] == 'user created') {
-              alert(`${res['message']} Successfully `);
+            if (res.message == 'user created') {
+              alert(`${res.message} Successfully `);
               // this.router.navigateByUrl('/login');
             } else {
               alert('The email or username is already exist ');
@@ -53,8 +53,8 @@ export class RegisterComponent implements OnInit {
 
         this.us.createAdmin(dataFromForm).subscribe(
           (res) => {
-            if (res['message'] == 'Admin created') {
-              alert(`${res['message']} Successfully `);
+            if (res.message == 'Admin created') {
+              alert(`${res.message} Successfully `);
               this.router.navigateByUrl('/login');
             } else {
               alert('The email or username is already exist ');
