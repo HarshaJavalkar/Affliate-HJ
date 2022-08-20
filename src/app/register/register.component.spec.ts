@@ -15,8 +15,8 @@ describe('RegisterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RegisterComponent ],
-      providers:[DataService],
-      imports:[RouterTestingModule, BrowserDynamicTestingModule, HttpClientModule, ToastrModule.forRoot(),ReactiveFormsModule, FormsModule]
+      providers: [DataService],
+      imports: [RouterTestingModule, BrowserDynamicTestingModule, HttpClientModule, ToastrModule.forRoot(), ReactiveFormsModule, FormsModule]
     })
     .compileComponents();
   });

@@ -12,8 +12,8 @@ describe('SalesinfoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SalesinfoComponent ],
-      providers:[DataService],
-      imports:[RouterTestingModule,HttpClientModule]
+      providers: [DataService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

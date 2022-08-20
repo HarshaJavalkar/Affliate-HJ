@@ -12,8 +12,8 @@ describe('UseraccountComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ UseraccountComponent ],
-      providers:[DataService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [DataService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

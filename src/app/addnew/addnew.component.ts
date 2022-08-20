@@ -11,6 +11,12 @@ declare var $: any;
   styleUrls: ['./addnew.component.css'],
 })
 export class AddnewComponent implements OnInit {
+
+  constructor(
+    private ds: DataService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
   file: File;
   username: string;
   sendData;
@@ -19,18 +25,16 @@ export class AddnewComponent implements OnInit {
   typeArray: Array<String>;
   typeLanguage: Array<String>;
 
-  constructor(
-    private ds: DataService,
-    private router: Router,
-    private toastr: ToastrService
-  ) {}
+  // form data used to hold multimedia content
+  formData = new FormData();
+
+  validity = false;
+
+  dataArray: Array<any>;
 
   addimage(event) {
     this.file = event.target.files[0];
   }
-
-  // form data used to hold multimedia content
-  formData = new FormData();
 
   ngOnInit(): void {
     // this.typeArray = [
@@ -62,36 +66,32 @@ export class AddnewComponent implements OnInit {
     this.typeLanguage = ['English', 'Hindi'];
   }
 
-  validity: boolean = false;
-
-  dataArray: Array<any>;
-
   addProd(ref) {
     console.log(ref.status);
     if (ref.status == 'VALID') {
-      let localData = sessionStorage.getItem('username');
+      const localData = sessionStorage.getItem('username');
 
       ref.value.active = true;
 
       ref.value.creator = localData;
       this.dataArray = ref.value;
       console.log('sent data', this.dataArray);
-      let productObj = ref.value;
+      const productObj = ref.value;
 
       this.formData.append('photo', this.file, this.file.name);
       this.formData.append('productObj', JSON.stringify(productObj));
 
       this.ds.createProduct(this.formData).subscribe(
         (res) => {
-          if (res['message'] == 'Product created successfully') {
+          if (res.message == 'Product created successfully') {
             this.toastr.success('New Book added successfully');
             ref.resetForm();
           }
           // this.router.navigateByUrl}(`/adminaccount/${localData}`)
 
-          if (res['message'] == 'Product already exist') {
-            this.toastMessage = res['message'];
-            this.toastr.warning(res['message']);
+          if (res.message == 'Product already exist') {
+            this.toastMessage = res.message;
+            this.toastr.warning(res.message);
 
             ref.resetForm();
           }
@@ -111,26 +111,26 @@ export class AddnewComponent implements OnInit {
   addAffliate(ref) {
     console.log(ref.status);
     if (ref.status == 'VALID') {
-      let localData = sessionStorage.getItem('username');
+      const localData = sessionStorage.getItem('username');
       ref.value.active = true;
       ref.value.creator = localData;
       this.dataArray = ref.value;
       console.log('sent data', this.dataArray);
-      let productObj = ref.value;
+      const productObj = ref.value;
 
       this.formData.append('photo', this.file, this.file.name);
       this.formData.append('productObj', JSON.stringify(productObj));
 
       this.ds.createAffliate(this.formData).subscribe(
         (res) => {
-          if (res['message'] == 'Affliate created successfully') {
+          if (res.message == 'Affliate created successfully') {
             this.toastr.success('New Affliate added successfully');
             ref.resetForm();
           }
           // this.router.navigateByUrl}(`/adminaccount/${localData}`)
-          if (res['message'] == 'Affliate already exist') {
-            this.toastMessage = res['message'];
-            this.toastr.warning(res['message']);
+          if (res.message == 'Affliate already exist') {
+            this.toastMessage = res.message;
+            this.toastr.warning(res.message);
             ref.resetForm();
           }
         },

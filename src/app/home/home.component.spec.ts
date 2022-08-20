@@ -18,9 +18,9 @@ xdescribe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent,filter, BrowserDynamicTestingModule ],
-      providers:[DataService, SpinnerService,PersistenceService],
-      imports:[HttpClientModule, BrowserDynamicTestingModule, RouterTestingModule, Ng2SearchPipeModule]
+      declarations: [ HomeComponent, filter, BrowserDynamicTestingModule ],
+      providers: [DataService, SpinnerService, PersistenceService],
+      imports: [HttpClientModule, BrowserDynamicTestingModule, RouterTestingModule, Ng2SearchPipeModule]
     })
     .compileComponents();
   });

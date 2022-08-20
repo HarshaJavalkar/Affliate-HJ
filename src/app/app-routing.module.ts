@@ -76,7 +76,7 @@ const routes: Routes = [
   {
     path: 'adminaccount/:username',
     component: AdminaccountComponent,
-    canActivateChild:[VerifyGuardServiceChild],
+    canActivateChild: [VerifyGuardServiceChild],
     children: [
       { path: '', redirectTo: 'account', pathMatch: 'full' },
       { path: 'adminprofile', component: AdminprofileComponent },

@@ -5,11 +5,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SpinnerService {
-public loadingStatus:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
+public loadingStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() { }
-  displayLoad(value:boolean){
-    this.loadingStatus.next(false)
+  displayLoad(value: boolean){
+    this.loadingStatus.next(false);
     }
-    
+
 }

@@ -66,21 +66,21 @@ export class LoginComponent implements OnInit {
     // this.spinner.displayLoad(true);
     this.subscription = this.us.loginUser(this.loginObj).subscribe(
       (res) => {
-        if (res['message'] == 'success') {
-          this.toastr.success("Successfull logged In!'");
-          sessionStorage.setItem('token', res['token']);
+        if (res.message == 'success') {
+          this.toastr.success('Successfull logged In!\'');
+          sessionStorage.setItem('token', res.token);
           this.loginStatus = true;
-          sessionStorage.setItem('username', res['userObj']);
+          sessionStorage.setItem('username', res.userObj);
           sessionStorage.setItem('Usertype', this.loginObj.User);
           this.loginCheck = true;
           this.us.sendloginState(this.loginStatus);
           this.router.navigateByUrl(`/useraccount/${this.loginObj.username}`);
         }
 
-        if (res['message'] == 'Invalid username') {
+        if (res.message == 'Invalid username') {
           this.toastr.error('Username is not valid Please Register');
         }
-        if (res['message'] == 'Invalid Password') {
+        if (res.message == 'Invalid Password') {
           this.toastr.error('Incorrect  Password');
         }
       },
@@ -95,21 +95,21 @@ export class LoginComponent implements OnInit {
   adminLogin() {
     this.us.loginAdmin(this.loginObj).subscribe(
       (res) => {
-        if (res['message'] == 'success') {
+        if (res.message == 'success') {
           this.toastr.success('Login Success');
-          sessionStorage.setItem("isAdminVerified",res.verifiedStatus);
-          sessionStorage.setItem('token', res['token']);
-          sessionStorage.setItem('username', res['adminObj']);
+          sessionStorage.setItem('isAdminVerified', res.verifiedStatus);
+          sessionStorage.setItem('token', res.token);
+          sessionStorage.setItem('username', res.adminObj);
           sessionStorage.setItem('Usertype', this.loginObj.User);
-          sessionStorage.setItem('admin_email', res['email'])
+          sessionStorage.setItem('admin_email', res.email);
           this.loginStatus = true;
           this.us.sendloginState(this.loginStatus);
           this.router.navigateByUrl(`/adminaccount/${this.loginObj.username}`);
         }
-        if (res['message'] == 'Invalid username') {
+        if (res.message == 'Invalid username') {
           this.toastr.error('Username is not valid Please Register');
         }
-        if (res['message'] == 'Invalid Password') {
+        if (res.message == 'Invalid Password') {
           this.toastr.error('Incorrect  Password');
         }
 

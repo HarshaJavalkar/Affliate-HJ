@@ -9,12 +9,12 @@ import { DataService } from '../data.service';
   styleUrls: ['./thanks.component.css'],
 })
 export class ThanksComponent implements OnInit {
-  receivedAddress: string;
   constructor(private router: Router, private ds: DataService) {}
-
-  ngOnInit(): void {}
+  receivedAddress: string;
 
   username = sessionStorage.getItem('username');
+
+  ngOnInit(): void {}
 
   backtoHome() {
     this.router.navigateByUrl(`/useraccount/${this.username}`);

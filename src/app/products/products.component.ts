@@ -12,8 +12,8 @@ export class ProductsComponent implements OnInit {
   productid;
   prodobj = { id: Number };
   product;
-  constructor(private ar: ActivatedRoute, private ds: DataService,private router:Router, private spinner: SpinnerService) {}
-  
+  constructor(private ar: ActivatedRoute, private ds: DataService, private router: Router, private spinner: SpinnerService) {}
+
   clickedExplore(cardClicked) {
     this.router.navigateByUrl(`/store/${cardClicked}`);
   }
@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
     // this.spinner.displayLoad(true);
     this.ds.getProductwithid(this.prodobj).subscribe(
       (res) => {
-        this.product = res['message'];
+        this.product = res.message;
       },
       (err) => {
         this.spinner.displayLoad(true);

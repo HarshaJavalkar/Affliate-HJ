@@ -15,8 +15,8 @@ describe('AddnewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AddnewComponent ],
-      providers:[DataService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule, ReactiveFormsModule,FormsModule, ToastrModule.forRoot()]
+      providers: [DataService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule, ReactiveFormsModule, FormsModule, ToastrModule.forRoot()]
     })
     .compileComponents();
   });

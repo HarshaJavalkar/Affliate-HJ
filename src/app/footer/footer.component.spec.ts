@@ -13,8 +13,8 @@ describe('FooterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ FooterComponent ],
-      providers:[DataService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [DataService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

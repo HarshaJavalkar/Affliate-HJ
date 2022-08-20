@@ -13,8 +13,8 @@ describe('AdmindashComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AdmindashComponent ],
-      providers:[DataService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [DataService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

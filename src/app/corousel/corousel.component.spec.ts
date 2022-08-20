@@ -13,8 +13,8 @@ describe('CorouselComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CorouselComponent ],
-      providers:[DataService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [DataService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

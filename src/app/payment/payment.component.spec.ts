@@ -14,8 +14,8 @@ describe('PaymentComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ PaymentComponent ],
-      providers:[DataService],
-      imports:[RouterTestingModule, HttpClientModule, ToastrModule.forRoot(), FormsModule]
+      providers: [DataService],
+      imports: [RouterTestingModule, HttpClientModule, ToastrModule.forRoot(), FormsModule]
     })
     .compileComponents();
   });

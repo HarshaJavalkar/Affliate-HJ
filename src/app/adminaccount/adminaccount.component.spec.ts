@@ -13,8 +13,8 @@ describe('AdminaccountComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AdminaccountComponent ],
-      providers:[DataService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [DataService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   });

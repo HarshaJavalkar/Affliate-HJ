@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./adminaccount.component.css'],
 })
 export class AdminaccountComponent implements OnInit {
-  status: boolean = false;
+  status = false;
   adminName: string;
 
   constructor(
