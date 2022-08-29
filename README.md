@@ -32,12 +32,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Explain the flow chart (configure flow chart using css and HTML)
 
 #### Backend
-- Impliment validations 
-- defferentiate defferent routes 
+- validations 
+- differentiate defferent routes 
 - unit test cases (low priority)
 - make design pattern diagrams (SAD documents)
-
-
 expiry time
 ============
 
