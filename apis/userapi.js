@@ -10,6 +10,7 @@ const Admin = require("../models/Admin");
 
 const bcryptjs = require("bcryptjs");
 const verifyTokenMethod = require("./middlewares/verifytoken");
+const axios = require("axios");
 
 // const authSchema=require('../helpers/validation')
 
@@ -150,6 +151,39 @@ userApiObj.post(
 
       res.send({ message: "product added to wishlist" });
     }
+  })
+);
+
+userApiObj.get(
+  "/getMarketInfo",
+
+  errorHandler(async (req, res) => {
+    console.log(req);
+    let response = null;
+    new Promise(async (resolve, reject) => {
+      try {
+        response = await axios.get(
+          "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
+          {
+            headers: {
+              "X-CMC_PRO_API_KEY": "66f92246-9cdc-4c4a-a8b1-a199a1a4c623",
+            },
+          }
+        );
+      } catch (ex) {
+        response = null;
+        // error
+        console.log(ex);
+        reject(ex);
+      }
+      if (response) {
+        // success
+        const json = response.data;
+        console.log(json);
+        res.send({ message: json });
+        resolve(json);
+      }
+    });
   })
 );
 

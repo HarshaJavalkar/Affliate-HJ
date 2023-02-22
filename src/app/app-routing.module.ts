@@ -8,6 +8,7 @@ import { AdmindashComponent } from './admindash/admindash.component';
 import { AdminprofileComponent } from './adminprofile/adminprofile.component';
 import { BagComponent } from './bag/bag.component';
 import { CartComponent } from './cart/cart.component';
+import { AuthGuardService } from './guards/auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ModalComponent } from './modal/modal.component';
@@ -27,7 +28,10 @@ import { UseraccountComponent } from './useraccount/useraccount.component';
 
 import { UserdashComponent } from './userdash/userdash.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
-import { VerifyGuardService, VerifyGuardServiceChild } from './verify-guard.service';
+import {
+  VerifyGuardService,
+  VerifyGuardServiceChild,
+} from './verify-guard.service';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
@@ -106,7 +110,7 @@ const routes: Routes = [
   },
   { path: 'store', component: StoreComponent },
   { path: 'error', component: PagenotfoundComponent },
-  { path: 'modal', component: ModalComponent },
+  { path: 'modal', component: ModalComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: 'pagenotfound' },
 ];
 

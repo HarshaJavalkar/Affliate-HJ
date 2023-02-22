@@ -49,9 +49,11 @@ export class ModalComponent implements OnInit {
     this.Data.verifyRequestAdmin(email).subscribe((data) => {
       if (data.status == 200 && data.message == 'verified') {
         this.toastr.success('Profile verified successfully');
-        this.router.navigateByUrl(
-          `/adminaccount/${sessionStorage.getItem('username')}`
-        );
+        debugger;
+        sessionStorage.setItem('isAdminVerified', 'verified');
+        let username = sessionStorage.getItem('username');
+        this.router.navigateByUrl(`/adminaccount/${username}`);
+        debugger;
       } else {
         document.getElementById('trig-button').click();
         this.toastr.error(data.message);

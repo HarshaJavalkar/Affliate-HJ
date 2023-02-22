@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -172,5 +172,8 @@ export class DataService {
   }
   sendEmail(email): Observable<any> {
     return this.hc.post('admin/sendemail', { email });
+  }
+  getLatestMarketInfo(): Observable<any> {
+    return this.hc.get('/user/getMarketInfo');
   }
 }

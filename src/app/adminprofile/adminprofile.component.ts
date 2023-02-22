@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminprofileComponent implements OnInit {
   username: string;
+  today = new Observable();
   constructor() {
     this.username = sessionStorage.getItem('username');
   }

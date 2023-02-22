@@ -1,0 +1,40 @@
+.outer-wrap{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.outer-wrap img{
+    width: 200px;
+    height: 200px;
+}
+.content{
+    order: 4;
+    width: 100%;
+    padding: 0px 30px;
+}
+.hr-1{
+    height: 15px;
+    border: none;
+    margin: 0 !important;
+    border-radius: 20px;
+}
+.hr-2{
+    border: none;
+    height: 10px;
+    margin: auto;
+    width: 75%;
+    margin-top:5px;
+    border-radius: 20px;
+
+}
+.hr-3{
+    border: none;
+    height: 5px;
+    margin: auto;
+    margin-top: 5px;
+    width: 50%;
+    border-radius: 20px;
+
+
+}
