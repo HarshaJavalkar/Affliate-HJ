@@ -31,7 +31,7 @@ export class AccountComponent implements OnInit {
     });
     this.ds.getSales(this.user).subscribe(
       (res) => {
-        this.salesCart = res['message'];
+        this.salesCart = res.message;
         this.salesCount = this.salesCart.length;
         for (let i = 0; i < this.salesCart.length; i++) {
           this.sum = Math.round(this.sum + this.salesCart[i].price);
@@ -44,13 +44,14 @@ export class AccountComponent implements OnInit {
         // Pick all elements one by one
         for (let i = 1; i < this.salesCart.length; i++) {
           let j = 0;
-          for (j = 0; j < i; j++)
+          for (j = 0; j < i; j++) {
             if (
               this.salesCart[i].orderPlacedBy ===
               this.salesCart[j].orderPlacedBy
             ) {
               break;
             }
+          }
           // If not printed earlier, then print it
           if (i === j) {
             this.countUsers++;

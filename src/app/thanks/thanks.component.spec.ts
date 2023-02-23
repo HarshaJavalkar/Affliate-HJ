@@ -12,8 +12,8 @@ describe('ThanksComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ThanksComponent ],
-      providers:[DataService],
-      imports:[RouterTestingModule, HttpClientModule]
+      providers: [DataService],
+      imports: [RouterTestingModule, HttpClientModule]
 
     })
     .compileComponents();

@@ -11,7 +11,7 @@ describe('UserdashComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ UserdashComponent ],
-      imports:[HttpClientModule, RouterTestingModule]
+      imports: [HttpClientModule, RouterTestingModule]
     })
     .compileComponents();
   });

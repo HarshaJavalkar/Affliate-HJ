@@ -7,13 +7,13 @@ import { SpinnerService } from '../spinner.service';
   styleUrls: ['./spinner.component.css']
 })
 export class SpinnerComponent implements OnInit {
-  display: boolean
+  display: boolean;
   constructor(private spinner: SpinnerService) { }
 
   ngOnInit(): void {
-    this.spinner.loadingStatus.subscribe(val=>{
+    this.spinner.loadingStatus.subscribe(val => {
       this.display = val;
-    })
+    });
   }
 
 }

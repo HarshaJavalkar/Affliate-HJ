@@ -15,8 +15,8 @@ describe('ProductinfoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ProductinfoComponent ],
-      providers:[DataService, SpinnerService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule, ToastrModule.forRoot()]
+      providers: [DataService, SpinnerService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule, ToastrModule.forRoot()]
     })
     .compileComponents();
   });

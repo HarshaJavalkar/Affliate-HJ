@@ -11,7 +11,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         HttpClientModule
       ],
-      providers:[DataService],
+      providers: [DataService],
       declarations: [
         AppComponent
       ],

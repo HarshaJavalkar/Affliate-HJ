@@ -18,7 +18,7 @@ export class VerifyGuardService implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    let status = JSON.parse(sessionStorage.getItem('isAdminVerified'));
+    const status = JSON.parse(sessionStorage.getItem('isAdminVerified'));
     if (status) {
       return true;
     } else {
@@ -38,7 +38,7 @@ export class VerifyGuardServiceChild implements CanActivateChild {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    let status = JSON.parse(sessionStorage.getItem('isAdminVerified'));
+    const status = JSON.parse(sessionStorage.getItem('isAdminVerified'));
 
     if (status) {
       return true;

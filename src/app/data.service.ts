@@ -167,10 +167,10 @@ export class DataService {
     return this.hc.post('admin/verifyAdmin', email);
   }
   getAdminVeifyStatus(): Observable<any> {
-    let emailObj = { email: sessionStorage.getItem('admin_email') };
+    const emailObj = { email: sessionStorage.getItem('admin_email') };
     return this.hc.post(`admin/getVerificationStatus`, emailObj);
   }
   sendEmail(email): Observable<any> {
-    return this.hc.post('admin/sendemail', { email: email });
+    return this.hc.post('admin/sendemail', { email });
   }
 }

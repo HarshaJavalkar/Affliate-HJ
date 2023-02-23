@@ -20,7 +20,7 @@ export class SalesinfoComponent implements OnInit {
 
     this.ds.getSales(this.user).subscribe(
       (res) => {
-        this.salesCart = res['message'];
+        this.salesCart = res.message;
 
         console.log(this.salesCart);
         this.salesCount = this.salesCart.length;

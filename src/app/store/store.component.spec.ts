@@ -15,8 +15,8 @@ describe('StoreComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ StoreComponent ],
-      providers:[DataService, SpinnerService, PersistenceService],
-      imports:[RouterTestingModule, HttpClientModule, ToastrModule.forRoot()]
+      providers: [DataService, SpinnerService, PersistenceService],
+      imports: [RouterTestingModule, HttpClientModule, ToastrModule.forRoot()]
 
     })
     .compileComponents();

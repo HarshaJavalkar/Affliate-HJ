@@ -27,7 +27,7 @@ export class UserprofileComponent implements OnInit {
 
     this.subscription = this.ds.getprofile(this.userObj).subscribe(
       (res) => {
-        this.userprofile = res['message'];
+        this.userprofile = res.message;
       },
       (err) => {}
     );
@@ -44,14 +44,14 @@ export class UserprofileComponent implements OnInit {
   }
 
   changePassword(userpass) {
-    let changepassObj = userpass.value;
+    const changepassObj = userpass.value;
     changepassObj.username = sessionStorage.getItem('username');
     console.log('pass', changepassObj);
 
     this.ds.changepassword(changepassObj).subscribe(
       (res) => {
         if (
-          res['message'] == 'Session is Expired.. Please relogin to continue'
+          res.message == 'Session is Expired.. Please relogin to continue'
         ) {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -59,14 +59,14 @@ export class UserprofileComponent implements OnInit {
           this.router.navigateByUrl('/login');
           alert('Session Expired Please relogin');
         }
-        if (res['message'] == 'Unauthorized access') {
-          alert(res['message']);
+        if (res.message == 'Unauthorized access') {
+          alert(res.message);
         }
 
-        if (res['message'] == 'Password Not matched') {
-          alert(res['message']);
+        if (res.message == 'Password Not matched') {
+          alert(res.message);
         } else {
-          alert(res['message']);
+          alert(res.message);
         }
       },
       (err) => {}

@@ -42,18 +42,19 @@ export class ModalComponent implements OnInit {
     return this.form.controls;
   }
   onSubmit() {
-    let email = {email: sessionStorage.getItem('admin_email'), code:this.form.value.code}
-    this.Data.verifyRequestAdmin(
-      email
-    ).subscribe((data) => {
-      console.log(data);
+    const email = {
+      email: sessionStorage.getItem('admin_email'),
+      code: this.form.value.code,
+    };
+    this.Data.verifyRequestAdmin(email).subscribe((data) => {
       if (data.status == 200 && data.message == 'verified') {
         this.toastr.success('Profile verified successfully');
-        this.router.navigateByUrl(`/adminaccount/${sessionStorage.getItem('username')}`
+        this.router.navigateByUrl(
+          `/adminaccount/${sessionStorage.getItem('username')}`
         );
       } else {
         document.getElementById('trig-button').click();
-        this.toastr.error('Email not found');
+        this.toastr.error(data.message);
       }
     });
   }

@@ -14,17 +14,19 @@ export class CorouselComponent implements OnInit {
     private router: Router,
     private spinner: SpinnerService,
     private data: DataService
-  ) {}
+  ) {
+
+  }
+  c_items = [];
   clickedExplore(cardClicked) {
     this.router.navigateByUrl(`/store/${cardClicked}`);
   }
-  c_items = [];
 
   ngOnInit(): void {
 
-     let username=sessionStorage.getItem('username')
-    this.data.c_items(username).subscribe((res) => {
-      this.c_items = res['message'];
+     const username = sessionStorage.getItem('username');
+     this.data.c_items(username).subscribe((res) => {
+      this.c_items = res.message;
     });
   }
 }

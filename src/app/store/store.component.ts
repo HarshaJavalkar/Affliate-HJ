@@ -33,7 +33,7 @@ export class StoreComponent implements OnInit {
   }
 
   clickedCart(affliate) {
-    let status = sessionStorage.getItem('username');
+    const status = sessionStorage.getItem('username');
 
     if (status) {
       affliate.userAdded = status;
@@ -42,7 +42,7 @@ export class StoreComponent implements OnInit {
 
       this.ds.addtoCart(affliate).subscribe(
         (res) => {
-          if (res['message'] == 'product added to cart') {
+          if (res.message == 'product added to cart') {
             this.toastr.success('product added successfully');
           } else {
             this.toastr.success('Product is  already exist in cart');
@@ -59,7 +59,7 @@ export class StoreComponent implements OnInit {
   // wishlist
 
   clickedWishlist(affliate) {
-    let status = sessionStorage.getItem('username');
+    const status = sessionStorage.getItem('username');
 
     if (status) {
       affliate.userAdded = status;
@@ -70,7 +70,7 @@ export class StoreComponent implements OnInit {
         (res) => {
           // console.log(res['message']);
 
-          if (res['message'] == 'product added to wishlist') {
+          if (res.message == 'product added to wishlist') {
             this.toastr.success('product added to WishList');
           } else {
             this.toastr.error('Product is  already exist in wishlist');
@@ -96,19 +96,20 @@ export class StoreComponent implements OnInit {
     this.clickedCard = +this.clickedCard;
     this.ds.getAllaffliateProductstoUsers().subscribe(
       (res) => {
-        this.affliatesAvailable = res['message'];
+        this.affliatesAvailable = res.message;
         // console.log('checkpoint-1', this.affliatesAvailable);
 
         // this.booksUpdatedList.length=this.affliatesAvailable.length;
 
         for (let i = 0; i < this.affliatesAvailable.length; i++) {
-          if (this.affliatesAvailable[i].active)
+          if (this.affliatesAvailable[i].active) {
             this.booksUpdatedList.push(this.affliatesAvailable[i]);
+          }
         }
 
         // console.log('checkpoint-2', this.booksUpdatedList);
 
-        this.booksUpdatedList = this.affliatesAvailable.filter(function (el) {
+        this.booksUpdatedList = this.affliatesAvailable.filter(function(el) {
           return el != null;
         });
         // console.log("last",this.booksUpdatedList)
