@@ -1,0 +1,1 @@
+{"ast":null,"code":"export function errorHandler(res) {\n  if (res.status == '200') {\n    return null;\n  } else {\n    return res;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

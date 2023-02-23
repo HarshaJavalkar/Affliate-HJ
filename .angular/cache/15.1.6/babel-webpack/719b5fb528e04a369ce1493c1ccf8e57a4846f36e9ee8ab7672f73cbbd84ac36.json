@@ -1,0 +1,1 @@
+{"ast":null,"code":"/**\n * Entry point for all public APIs of the package.\n */\nexport { PersistenceService, AbstractCachedService, StorageType, PersistenceModule } from './src/angular-persistence';\n\n//# sourceMappingURL=index.js.map","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
