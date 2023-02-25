@@ -14,7 +14,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CorouselComponent } from './corousel/corousel.component';
 import { StoreComponent } from './store/store.component';
 import { PopularComponent } from './popular/popular.component';
-import { FormsModule, ReactiveFormsModule, ɵInternalFormsSharedModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserdashComponent } from './userdash/userdash.component';
 import { AccountComponent } from './account/account.component';
 import { AdmindashComponent } from './admindash/admindash.component';
@@ -102,7 +102,6 @@ import { VerifyGuardService } from './verify-guard.service';
       preventDuplicates: true,
       positionClass: 'toast-top-center',
     }),
-    GooglePayButtonModule,
     HttpClientModule,
   ],
   providers: [
@@ -110,10 +109,9 @@ import { VerifyGuardService } from './verify-guard.service';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationService,
       multi: true,
-
     },
     PersistenceService,
-    VerifyGuardService
+    VerifyGuardService,
   ],
 
   bootstrap: [AppComponent],

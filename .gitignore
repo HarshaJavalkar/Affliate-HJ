@@ -41,9 +41,10 @@ yarn-error.log
 testem.log
 /typings
 node_modules
-./angular/
+.angular/
 angular/
 package-lock.json
 # System Files
 .DS_Store
 Thumbs.db
+package-lock.json
