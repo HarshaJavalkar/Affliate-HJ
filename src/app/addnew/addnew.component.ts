@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { boolean } from 'joi';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
 declare var $: any;

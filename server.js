@@ -11,17 +11,15 @@ app.use(exp.static(path.join(__dirname, "dist/bookStore")));
 
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.DBURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
+mongoose.connect(process.env.DBURL).then(() => {
+  console.log("and is alive");
 });
+
 const db = mongoose.connection;
 
 db.on("error", () => console.log("error in DB connection".red));
 db.once("open", () => console.log("DB connected".green));
 
-mongoose.set("useFindAndModify", false);
 const userApiObj = require("./apis/userapi");
 
 const adminApiObj = require("./apis/adminapi");

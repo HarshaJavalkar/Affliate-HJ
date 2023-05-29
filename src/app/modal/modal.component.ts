@@ -7,10 +7,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { string } from 'joi';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-// import { bootstrap } from 'bootstrap';
 
 @Component({
   selector: 'app-modal',

@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { boolean } from 'joi';
 import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 

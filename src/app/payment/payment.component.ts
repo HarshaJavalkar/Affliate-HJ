@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { parse } from 'dotenv/types';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
 import { ViewChild } from '@angular/core';

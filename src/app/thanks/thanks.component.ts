@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { string } from 'joi';
 import { DataService } from '../data.service';
 
 @Component({

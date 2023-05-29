@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
-import { required } from 'joi';
 import { SpinnerService } from '../spinner.service';
 
 @Component({
