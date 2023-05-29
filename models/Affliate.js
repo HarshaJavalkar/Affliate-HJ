@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 
 const alliateSchema = new mongoose.Schema({
-  active: Boolean,
-  creator: String,
-  prod_price: Number,
-  prod_desc: String,
-  prod_id: Number,
-  prod_name: String,
-  photo: String,
-  type: String,
-  affliateLink:String,
-  overallRating: Number
+  active: {type: Boolean},
+  creator: {type: String},
+  prod_price: {type: Number},
+  prod_desc: {type: String},
+  prod_id: { type: mongoose.Schema.Types.ObjectId, of: Number, required: false },
+  prod_name: {type: String},
+  photo: {type: String},
+  type: {type: String},
+  affliateLink:{type: String},
+  overallRating: {type: Number}
 });
 
 //Create a model

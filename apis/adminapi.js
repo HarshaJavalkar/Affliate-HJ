@@ -8,7 +8,6 @@ const jwt = require("jsonwebtoken");
 const Admin = require("../models/Admin");
 const bcryptjs = require("bcryptjs");
 const User = require("../models/User");
-var CryptoJS = require("crypto-js");
 var nodemailer = require("nodemailer");
 // const authSchema=require('../helpers/validation')
 

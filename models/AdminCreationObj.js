@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+
 const AdminCreateSchema = new mongoose.Schema({
-  username: String,
-  creation_id: Number,
+  username: { type: String},
+  creation_id: { type: mongoose.Schema.Types.ObjectId, of: Number, required: false },
 });
 const AdminCreationObj = mongoose.model("Adminslist", AdminCreateSchema);
 

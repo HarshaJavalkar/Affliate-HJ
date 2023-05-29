@@ -1,11 +1,15 @@
 const mongoose = require("mongoose");
+
 const AdminSchema = new mongoose.Schema({
-  username: String,
-  password: String,
-  email: String,
-  regcode: 0,
-  verified:Boolean,
-  products: [],
+  username: {type: String},
+  password: {type: String},
+  email: {type: String},
+  regcode:  {
+    type: Number,
+    default: 0
+},
+  verified:{type: Boolean},
+  products: { type: Array, default: [] },
   sales: { type: Array, default: [] },
   c_items: { type: Array, default: [] }
 });
